@@ -17,10 +17,12 @@ RUN apt-get -y install fonts-liberation xdg-utils && \
   dpkg -i google-chrome-stable_current_amd64.deb && \
   rm google-chrome-stable_current_amd64.deb
 
+ENV LANG=C.UTF-8 PATH=/root/.asdf/bin:/root/.asdf/shims:$PATH
+
 RUN git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.9.0 && \
   echo . $HOME/.asdf/asdf.sh >> $HOME/.bashrc && \
-  echo . $HOME/.asdf/completions/asdf.bash >> $HOME/.bashrc
-
-ENV LANG=C.UTF-8 PATH=/root/.asdf/bin:/root/.asdf/shims:$PATH
+  echo . $HOME/.asdf/completions/asdf.bash >> $HOME/.bashrc && \
+  asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git && \
+  echo legacy_version_file = yes > $HOME/.asdfrc
 
 ENTRYPOINT []
