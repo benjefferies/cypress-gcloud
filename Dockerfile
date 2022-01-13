@@ -17,4 +17,8 @@ RUN apt-get -y install fonts-liberation xdg-utils && \
   dpkg -i google-chrome-stable_current_amd64.deb && \
   rm google-chrome-stable_current_amd64.deb
 
+RUN git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.9.0 && \
+  echo . $HOME/.asdf/asdf.sh >> $HOME/.bashrc && \
+  echo . $HOME/.asdf/completions/asdf.bash >> $HOME/.bashrc
+
 ENTRYPOINT []
