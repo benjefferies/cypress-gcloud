@@ -1,5 +1,7 @@
 FROM cypress/included:9.2.0
 
+ENV BASH_ENV="$HOME/.bashrc"
+
 # Install gcloud
 RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
   curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg  add - && \
@@ -17,10 +19,8 @@ RUN apt-get -y install fonts-liberation xdg-utils && \
   dpkg -i google-chrome-stable_current_amd64.deb && \
   rm google-chrome-stable_current_amd64.deb
 
-# ASDF
 RUN git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.9.0 && \
-  echo . $HOME/.asdf/asdf.sh >> $HOME/.bash_profile && \
-  echo . $HOME/.asdf/completions/asdf.bash >> $HOME/.bash_profile && \
-  touch $HOME/.bash_sessions_disable
+  echo . $HOME/.asdf/asdf.sh >> $HOME/.bashrc && \
+  echo . $HOME/.asdf/completions/asdf.bash >> $HOME/.bashrc
 
 ENTRYPOINT []
