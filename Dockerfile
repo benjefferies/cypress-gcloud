@@ -1,6 +1,6 @@
 FROM cypress/included:9.2.0
 
-ENV BASH_ENV="$HOME/.bashrc"
+ENV LANG=C.UTF-8 PATH=$HOME/asdf/.asdf/bin:$HOME/asdf/.asdf/shims:$PATH
 
 # Install gcloud
 RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
