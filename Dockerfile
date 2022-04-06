@@ -1,7 +1,7 @@
 FROM cypress/included:9.5.3
 
 # Update package lists
-apt-get update -y
+apt-get install update -y
 
 # Install curl
 apt-get curl -y
