@@ -1,10 +1,7 @@
 FROM cypress/included:9.5.3
 
-# Update package lists
-apt-get install update -y
-
-# Install curl
-apt-get curl -y
+# Update package lists and install curl
+apt-get install update -y && apt-get curl -y
 
 # Install gcloud
 RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
