@@ -1,4 +1,4 @@
-FROM cypress/included:9.5.3
+FROM cypress/included:9.5.2
 
 # Install gcloud
 RUN apt-get -y update && apt-get install -y curl gnupg && \
