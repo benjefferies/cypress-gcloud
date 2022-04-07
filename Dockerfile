@@ -1,7 +1,7 @@
 FROM cypress/included:9.5.2
 
 # Install gcloud
-RUN apt-get -y update && apt-get install -y curl gnupg && \
+RUN apt-get -y update && apt-get install -y curl gnupg make && \
   echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
   curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg  add - && \
   apt-get update -y && \
